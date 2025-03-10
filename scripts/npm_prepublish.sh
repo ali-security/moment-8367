@@ -2,30 +2,8 @@
 
 set -e
 
-if [ "$#" != 1 ]; then
-    echo "Please provide tag to checkout" >&2
-    exit 1
-fi
-tag="$1"
-
-while [ "$PWD" != '/' -a ! -f moment.js ]; do
-    cd ..
-done
-
-if [ ! -f moment.js ]; then
-    echo "Run me from the moment repo" >&2
-    exit 1
-fi
-
-basename=$(basename $PWD)
-src=moment-npm-git
-dest=moment-npm
-
-cd ..
-
-rm -rf $src $dest
-
-git clone $basename $src
+src=.
+dest=output_build
 mkdir $dest
 
 
